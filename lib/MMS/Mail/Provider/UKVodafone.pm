@@ -15,11 +15,11 @@ MMS::Mail::Provider::UKVodafone - This provides a class for parsing an MMS::Mail
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -45,7 +45,7 @@ Return a new MMS::Mail::Provider::UKVodafone object.
 
 =item parse MMS::Mail::Message
 
-The parse method can be called as a class method or an instance method, normally it will be invoked as a class method.  It parses the MMS::Mail::Message object and returns an MMS::Mail::Message::Parsed object.
+The parse method is called as an instance method.  It parses the MMS::Mail::Message object and returns an MMS::Mail::Message::Parsed object.
 
 =back
 
@@ -89,11 +89,7 @@ L<MMS::Mail::Message>, L<MMS::Mail::Message::Parsed>, L<MMS::Mail::Provider>, L<
 
 sub parse {
 
-  my $self;
-  if (MMS::Mail::Provider::_is_object(@_)) {
-    $self = shift;
-  }
-
+  my $self = shift;
   my $message = shift;
 
   unless (defined $message) {
@@ -142,6 +138,8 @@ sub parse {
     $parsed->text($text);
   }
 
+  # Set mobile number property to a VALID number
+  $parsed->phone_number($self->retrieve_phone_number($parsed->from));
   return $parsed;
 
 }
