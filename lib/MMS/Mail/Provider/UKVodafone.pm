@@ -15,11 +15,11 @@ MMS::Mail::Provider::UKVodafone - This provides a class for parsing an MMS::Mail
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
@@ -122,7 +122,7 @@ sub parse {
     foreach my $row1 ($ts1->rows) {
       foreach my $ele (@$row1) {
         if ($ele ne '') {
-          $parsed->subject($ele);
+          $parsed->header_subject($ele);
         }
       }
     }
@@ -135,11 +135,13 @@ sub parse {
     foreach my $row2 ($ts2->rows) {
       $text = join('\n', @$row2);
     }
-    $parsed->text($text);
+    if ($text ne "") {
+      $parsed->body_text($text);
+    }
   }
 
   # Set mobile number property to a VALID number
-  $parsed->phone_number($self->retrieve_phone_number($parsed->from));
+  $parsed->phone_number($self->retrieve_phone_number($parsed->header_from));
   return $parsed;
 
 }
