@@ -15,11 +15,11 @@ MMS::Mail::Provider::UKVodafone - This provides a class for parsing an MMS::Mail
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 SYNOPSIS
 
@@ -33,7 +33,7 @@ The following are the top-level methods of the MMS::Mail::Parser::UKVodafone cla
 
 =over
 
-=item new()
+=item C<new()>
 
 Return a new MMS::Mail::Provider::UKVodafone object.
 
@@ -43,9 +43,9 @@ Return a new MMS::Mail::Provider::UKVodafone object.
 
 =over
 
-=item parse MMS::Mail::Message
+=item C<parse> MMS::Mail::Message
 
-The parse method is called as an instance method.  It parses the MMS::Mail::Message object and returns an MMS::Mail::Message::Parsed object.
+The C<parse> method is called as an instance method.  It parses the MMS::Mail::Message object and returns an MMS::Mail::Message::Parsed object.
 
 =back
 
@@ -63,7 +63,7 @@ your bug as I make changes.
 
 =head1 NOTES
 
-To quote the perl artistic license ('perldoc perlartistic') :
+Please read the Perl artistic license ('perldoc perlartistic') :
 
 10. THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
     WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES
@@ -82,8 +82,7 @@ under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<MMS::Mail::Message>, L<MMS::Mail::Message::Parsed>, L<MMS::Mail::Provider>, L<MMS::Mail::Provider>
-
+L<MMS::Mail::Message>, L<MMS::Mail::Message::Parsed>, L<MMS::Mail::Provider>
 
 =cut
 

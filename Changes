@@ -1,5 +1,7 @@
 Revision history for MMS-Mail-Provider-UKVodafone
 
+0.04	29-Sep-2005 / 11:35
+	Improved pod by adding formatting codes
 0.03    26-Sep-2005 / 12:30
         Modified retrieve_phone_number to use header_from property instead of from to relect removal of this property from MMS::Message::Parsed class
         Added check to only set body_text property of MMS::Message::Parsed if it is not an empty string
