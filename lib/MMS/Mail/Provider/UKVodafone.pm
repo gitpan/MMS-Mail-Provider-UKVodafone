@@ -15,11 +15,11 @@ MMS::Mail::Provider::UKVodafone - This provides a class for parsing an MMS::Mail
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 =head1 SYNOPSIS
 
@@ -51,7 +51,7 @@ The C<parse> method is called as an instance method.  It parses the MMS::Mail::M
 
 =head1 AUTHOR
 
-Rob Lee, C<< <robl@robl.co.uk> >>
+Rob Lee, C<< <robl at robl.co.uk> >>
 
 =head1 BUGS
 
@@ -95,7 +95,7 @@ sub parse {
     return undef;
   }
 
-  my $parsed = new MMS::Mail::Message::Parsed($message);
+  my $parsed = new MMS::Mail::Message::Parsed(message=>$message);
 
   my $htmltext=undef;
   foreach my $element (@{$parsed->attachments}) {
@@ -120,7 +120,7 @@ sub parse {
   foreach my $ts1 ($te1->table_states) {
     foreach my $row1 ($ts1->rows) {
       foreach my $ele (@$row1) {
-        if ($ele ne '') {
+        if ((defined $ele) && ($ele ne '')) {
           $parsed->header_subject($ele);
         }
       }
@@ -134,7 +134,7 @@ sub parse {
     foreach my $row2 ($ts2->rows) {
       $text = join('\n', @$row2);
     }
-    if ($text ne "") {
+    if ((defined $text) && $text ne "") {
       $parsed->body_text($text);
     }
   }
