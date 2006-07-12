@@ -15,11 +15,11 @@ MMS::Mail::Provider::UKVodafone - This provides a class for parsing an MMS::Mail
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07
 
 =cut
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 =head1 SYNOPSIS
 
@@ -106,7 +106,7 @@ sub parse {
       if ($header->recommended_filename() !~ /(images\/vf3\.jpg|images\/vf4\.jpg|images\/vf6\.jpg)/) {
         $parsed->add_image($element);
       }
-    } elsif ($element->mime_type =~ /avi$/) {
+    } elsif ($element->mime_type =~ /^video/) {
         $parsed->add_video($element);
     }
   }

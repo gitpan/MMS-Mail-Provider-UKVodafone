@@ -1,5 +1,7 @@
 Revision history for MMS-Mail-Provider-UKVodafone
 
+0.07    06-Jul-2006 / 20:10
+	Added improved video recognition capability
 0.06    13-Jan-2005 / 17:50
         Updated dependancies to include version numbers for MMS classes
 0.05    09-Jan-2006 / 16:10
